@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const db = require('./db');
 const port = process.env.PORT || 3000;
+const morgan = require('morgan');
 module.exports = app;
 
 const DIST_DIR = path.join(__dirname, '../dist');
@@ -20,7 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // auth and api routes
-app.use('/auth', require('./auth'));
+// app.use('/auth', require('./auth'));
 app.use('/api', require('./api'));
 
 app.get('/', (req, res) => {
